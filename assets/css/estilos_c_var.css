@@ -1,0 +1,812 @@
+/* ============================================================
+   estilos.css — Inteligência Artificial
+   Tema: Tech / Futurista / Azul profundo
+   Páginas: index.html | servicos.html | contatos.html
+   ============================================================ */
+
+
+/* ── Variáveis globais ─────────────────────────────────────── */
+/* Centralizam cores, fontes e valores reutilizáveis.          */
+/* Alterar aqui afeta todo o site de uma só vez.               */
+:root {
+    --cor-fundo-escuro:     #020d18;
+    --cor-fundo-medio:      #04192e;
+    --cor-fundo-card:       #061e33;
+    --cor-fundo-nav:        #051626;
+    --cor-fundo-cabecalho:  #030f1e;
+    --cor-fundo-rodape:     #010a12;
+
+    --cor-primaria:         #0d8fff;
+    --cor-primaria-hover:   #3aaeff;
+    --cor-acento:           #00d4ff;
+    --cor-texto:            #cce4ff;
+    --cor-texto-fraco:      #5f8caa;
+    --cor-branco:           #ffffff;
+    --cor-erro:             #ff6b6b;
+    --cor-sucesso:          #4ade80;
+
+    --fonte-principal: 'Exo 2', sans-serif;
+    --fonte-mono:      'JetBrains Mono', monospace;
+
+    --raio-borda:   12px;
+    --sombra-card:  0 4px 30px rgba(0, 120, 255, 0.08);
+    --sombra-brilho: 0 0 20px rgba(13, 143, 255, 0.25);
+    --transicao:    all 0.3s ease;
+}
+
+
+/* ── Reset base ────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Padding e borda incluídos no tamanho total do elemento */
+}
+
+
+/* ── Corpo da página ───────────────────────────────────────── */
+body {
+    font-family: var(--fonte-principal);       /* Fonte principal */
+    background-color: var(--cor-fundo-escuro); /* Fundo azul quase preto */
+    color: var(--cor-texto);                   /* Cor padrão do texto */
+    line-height: 1.7;                          /* Espaçamento entre linhas */
+    -webkit-font-smoothing: antialiased;       /* Suaviza fontes no WebKit */
+}
+
+
+/* ============================================================
+   CABEÇALHO
+   ============================================================ */
+.container-cabecalho {
+    background-color: var(--cor-fundo-cabecalho);
+    padding: 36px 60px;
+    border-bottom: 1px solid rgba(13, 143, 255, 0.2);
+    position: relative; /* Permite posicionar o brilho de fundo */
+    overflow: hidden;   /* Oculta o brilho que sair dos limites */
+}
+
+/* Brilho radial decorativo no canto esquerdo do cabeçalho */
+.container-cabecalho::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(13, 143, 255, 0.12) 0%, transparent 70%);
+    pointer-events: none; /* Não interfere em cliques */
+}
+
+/* Flex container: logo + texto lado a lado */
+.cabecalho-inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-link { flex-shrink: 0; } /* Impede que o logo encolha */
+
+.logo-link img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(13, 143, 255, 0.5)); /* Brilho azul */
+}
+
+/* Texto pequeno acima do título (estilo código) */
+.cabecalho-label {
+    display: block;
+    font-family: var(--fonte-mono);
+    font-size: 0.75em;
+    color: var(--cor-acento);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.cabecalho-titulo {
+    font-size: 2em;
+    font-weight: 800;
+    color: var(--cor-branco);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+/* Três bolinhas decorativas no canto direito do cabeçalho */
+.cabecalho-decorativo {
+    position: absolute;
+    top: 20px; right: 60px;
+    display: flex;
+    gap: 8px;
+}
+.cabecalho-decorativo span {
+    display: block;
+    width: 10px; height: 10px;
+    border-radius: 50%; /* Círculo perfeito */
+}
+.cabecalho-decorativo span:nth-child(1) { background-color: rgba(255, 80, 80, 0.5); }
+.cabecalho-decorativo span:nth-child(2) { background-color: rgba(255, 200, 0, 0.5); }
+.cabecalho-decorativo span:nth-child(3) { background-color: rgba(0, 212, 255, 0.5); }
+
+
+/* ============================================================
+   NAVEGAÇÃO
+   ============================================================ */
+.container-navegacao {
+    background-color: var(--cor-fundo-nav);
+    padding: 0 60px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(13, 143, 255, 0.1);
+    position: sticky; /* Fica fixo no topo ao rolar */
+    top: 0;
+    z-index: 100;     /* Fica acima de outros elementos */
+}
+
+.nav-link {
+    font-family: var(--fonte-mono);
+    font-size: 0.9em;
+    color: var(--cor-texto-fraco);
+    text-decoration: none;
+    padding: 18px 28px;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid transparent; /* Reserva espaço para a linha do hover */
+    transition: var(--transicao);
+}
+
+.nav-link:hover {
+    color: var(--cor-branco);
+    border-bottom-color: var(--cor-primaria); /* Linha azul aparece embaixo */
+}
+
+/* Indica a página atual */
+.nav-link.ativo {
+    color: var(--cor-primaria);
+    border-bottom-color: var(--cor-primaria);
+}
+
+
+/* ============================================================
+   UTILITÁRIO: TÍTULO DE SEÇÃO
+   (Usado em todas as páginas)
+   ============================================================ */
+.secao-titulo {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* Rótulo estilo código acima do H2 */
+.secao-label {
+    display: block;
+    font-family: var(--fonte-mono);
+    font-size: 0.8em;
+    color: var(--cor-acento);
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
+}
+
+.secao-titulo h2 {
+    font-size: 2.4em;
+    font-weight: 800;
+    color: var(--cor-branco);
+    letter-spacing: -0.02em;
+}
+
+
+/* ============================================================
+   INDEX — SEÇÃO QUEM SOMOS (cards com ícone)
+   ============================================================ */
+.container-quem-somos {
+    background-color: var(--cor-fundo-escuro);
+    padding: 80px 60px;
+}
+
+/* Agrupa os cards em linha, com quebra automática */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Card individual */
+.servico {
+    background-color: var(--cor-fundo-card);
+    border: 1px solid rgba(13, 143, 255, 0.15);
+    border-radius: var(--raio-borda);
+    padding: 48px 40px;
+    text-align: center;
+    width: 300px;
+    box-shadow: var(--sombra-card);
+    transition: var(--transicao);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Linha de brilho no topo do card (invisível por padrão) */
+.servico::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cor-primaria), transparent);
+    opacity: 0;
+    transition: var(--transicao);
+}
+
+/* Eleva e ilumina o card ao passar o mouse */
+.servico:hover {
+    transform: translateY(-6px);
+    border-color: rgba(13, 143, 255, 0.4);
+    box-shadow: var(--sombra-brilho);
+}
+.servico:hover::before { opacity: 1; }
+
+/* Wrapper do ícone para adicionar brilho atrás */
+.servico-icone-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 24px;
+}
+
+.servico-icone-wrapper .icone {
+    width: 72px; height: 72px;
+    object-fit: contain;
+    position: relative;
+    z-index: 1; /* Ícone fica acima do brilho */
+}
+
+/* Brilho circular atrás do ícone */
+.icone-glow {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(13, 143, 255, 0.2) 0%, transparent 70%);
+    z-index: 0; /* Fica atrás do ícone */
+}
+
+.servico-texto {
+    font-family: var(--fonte-mono);
+    font-size: 0.95em;
+    color: var(--cor-texto);
+    line-height: 1.8;
+}
+
+.servico-texto-realce {
+    color: var(--cor-primaria);
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   SEÇÃO CTA — SERVIÇOS E CONTATOS
+   (Usada em todas as páginas)
+   ============================================================ */
+.container-servicos-contatos {
+    background-color: var(--cor-fundo-medio);
+    padding: 100px 60px;
+    text-align: center;
+    border-top: 1px solid rgba(13, 143, 255, 0.1);
+    border-bottom: 1px solid rgba(13, 143, 255, 0.1);
+}
+
+.cta-inner {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cta-label {
+    font-family: var(--fonte-mono);
+    font-size: 0.8em;
+    color: var(--cor-acento);
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.cta-titulo {
+    font-size: 1.8em;
+    font-weight: 300; /* Fino para contrastar com os botões */
+    color: var(--cor-branco);
+    margin-bottom: 48px;
+    line-height: 1.5;
+}
+
+/* Container dos botões lado a lado */
+.botoes-servicos-contatos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* ── Botões ── */
+.btn {
+    display: inline-block;
+    font-family: var(--fonte-mono);
+    font-size: 0.95em;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 16px 44px;
+    border-radius: var(--raio-borda);
+    letter-spacing: 0.05em;
+    transition: var(--transicao);
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+/* Botão primário: preenchido */
+.btn-primario {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    border-color: var(--cor-primaria);
+}
+.btn-primario:hover {
+    background-color: var(--cor-primaria-hover);
+    border-color: var(--cor-primaria-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(13, 143, 255, 0.35);
+}
+
+/* Botão secundário: contorno (outline) */
+.btn-secundario {
+    background-color: transparent;
+    color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+.btn-secundario:hover {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(13, 143, 255, 0.25);
+}
+
+
+/* ============================================================
+   RODAPÉ
+   ============================================================ */
+footer {
+    background-color: var(--cor-fundo-rodape);
+    padding: 48px 60px;
+    border-top: 1px solid rgba(13, 143, 255, 0.1);
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* Logotipo textual do rodapé */
+.footer-logo {
+    font-family: var(--fonte-mono);
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--cor-primaria);
+    border: 1px solid var(--cor-primaria);
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+footer p {
+    font-family: var(--fonte-mono);
+    font-size: 0.8em;
+    color: var(--cor-texto-fraco);
+    letter-spacing: 0.03em;
+}
+
+
+/* ============================================================
+   PÁGINA SERVIÇOS — container-servicos
+   ============================================================ */
+.container-servicos {
+    background-color: var(--cor-fundo-escuro);
+    padding: 80px 60px;
+}
+
+/* Grid dos cards de serviço */
+.servicos-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Card de serviço */
+.servico-card {
+    background-color: var(--cor-fundo-card);
+    border: 1px solid rgba(13, 143, 255, 0.15);
+    border-radius: var(--raio-borda);
+    padding: 48px 40px;
+    width: 460px;
+    box-shadow: var(--sombra-card);
+    transition: var(--transicao);
+    position: relative;
+    overflow: hidden;
+}
+
+.servico-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cor-primaria), transparent);
+    opacity: 0;
+    transition: var(--transicao);
+}
+
+.servico-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(13, 143, 255, 0.4);
+    box-shadow: var(--sombra-brilho);
+}
+.servico-card:hover::before { opacity: 1; }
+
+/* Cabeçalho do card: número + título lado a lado */
+.servico-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+/* Número decorativo (01, 02…) */
+.servico-numero {
+    font-family: var(--fonte-mono);
+    font-size: 2em;
+    font-weight: 600;
+    color: rgba(13, 143, 255, 0.3); /* Azul translúcido, apenas decorativo */
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.servico-card-header h3 {
+    font-size: 1.15em;
+    font-weight: 600;
+    color: var(--cor-branco);
+    line-height: 1.4;
+}
+
+/* Lista de itens do serviço */
+.servico-lista {
+    padding-left: 20px;
+}
+
+.servico-lista li {
+    color: var(--cor-texto);
+    font-size: 0.95em;
+    margin-bottom: 14px;
+    line-height: 1.6;
+    padding-left: 8px;
+}
+.servico-lista li:last-child { margin-bottom: 0; }
+
+/* Bullet azul para lista não-ordenada */
+.servico-lista:not(.servico-lista-numerada) li::marker {
+    color: var(--cor-primaria);
+}
+
+/* Número ciano para lista ordenada */
+.servico-lista-numerada li::marker {
+    color: var(--cor-acento);
+    font-family: var(--fonte-mono);
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   PÁGINA CONTATOS — informações de contato direto
+   ============================================================ */
+.container-contatos {
+    background-color: var(--cor-fundo-escuro);
+    padding: 80px 60px;
+    text-align: center;
+}
+
+.contatos-subtitulo {
+    font-family: var(--fonte-mono);
+    font-size: 1em;
+    color: var(--cor-texto-fraco);
+    margin-bottom: 60px;
+}
+
+/* Grid dos cards de contato */
+.contatos-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Card de contato */
+.contato-card {
+    background-color: var(--cor-fundo-card);
+    border: 1px solid rgba(13, 143, 255, 0.15);
+    border-radius: var(--raio-borda);
+    padding: 48px 40px;
+    width: 340px;
+    box-shadow: var(--sombra-card);
+    transition: var(--transicao);
+    display: flex;
+    flex-direction: column; /* Itens empilhados verticalmente */
+    align-items: center;
+    gap: 10px;
+}
+
+.contato-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 212, 255, 0.4);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+/* Wrapper do ícone no card de contato */
+.contato-icone-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.contato-icone-wrapper img {
+    width: 56px; height: 56px;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+}
+
+/* Tipo de contato (ex: "Telefone", "E-mail") */
+.contato-tipo {
+    font-size: 0.85em;
+    font-family: var(--fonte-mono);
+    color: var(--cor-acento);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* Link clicável de contato */
+.contato-link {
+    font-family: var(--fonte-mono);
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--cor-primaria);
+    text-decoration: none;
+    transition: var(--transicao);
+}
+.contato-link:hover {
+    color: var(--cor-acento);
+    text-decoration: underline;
+}
+
+/* Observação em texto pequeno */
+.contato-obs {
+    font-size: 0.8em;
+    color: var(--cor-texto-fraco);
+}
+
+
+/* ============================================================
+   PÁGINA CONTATOS — FORMULÁRIO HTML5
+   ============================================================ */
+.container-formulario {
+    background-color: var(--cor-fundo-medio);
+    padding: 80px 60px;
+    border-top: 1px solid rgba(13, 143, 255, 0.1);
+}
+
+/* O formulário em si: card centralizado */
+.formulario {
+    max-width: 640px;      /* Largura máxima do formulário */
+    margin: 0 auto;        /* Centraliza horizontalmente */
+    background-color: var(--cor-fundo-card);
+    border: 1px solid rgba(13, 143, 255, 0.15);
+    border-radius: var(--raio-borda);
+    padding: 48px 40px;
+    box-shadow: var(--sombra-card);
+}
+
+/* Agrupa label + input + mensagem de erro */
+.campo-grupo {
+    display: flex;
+    flex-direction: column; /* Empilha os itens verticalmente */
+    gap: 8px;               /* Espaço entre label, input e erro */
+    margin-bottom: 24px;    /* Espaço entre os campos */
+}
+
+/* Último campo sem margem embaixo */
+.campo-grupo:last-of-type { margin-bottom: 0; }
+
+/* Label do campo */
+.campo-grupo label {
+    font-family: var(--fonte-mono);
+    font-size: 0.85em;
+    color: var(--cor-texto);
+    letter-spacing: 0.05em;
+}
+
+/* Asterisco vermelho nos campos obrigatórios */
+.obrigatorio { color: var(--cor-erro); }
+
+/* Texto "(opcional)" em cinza */
+.opcional {
+    color: var(--cor-texto-fraco);
+    font-size: 0.9em;
+}
+
+/* Estilo compartilhado por input, select e textarea */
+.formulario input,
+.formulario select,
+.formulario textarea {
+    width: 100%;                               /* Ocupa toda a largura do formulário */
+    background-color: var(--cor-fundo-escuro); /* Fundo escuro */
+    border: 1px solid rgba(13, 143, 255, 0.2); /* Borda azul sutil */
+    border-radius: 8px;
+    padding: 14px 16px;                        /* Espaçamento interno confortável */
+    color: var(--cor-branco);                  /* Texto branco */
+    font-family: var(--fonte-mono);
+    font-size: 0.95em;
+    transition: var(--transicao);
+    outline: none;                             /* Remove o contorno padrão do browser */
+}
+
+/* Estado de foco: borda azul mais visível */
+.formulario input:focus,
+.formulario select:focus,
+.formulario textarea:focus {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(13, 143, 255, 0.15); /* Anel de foco suave */
+}
+
+/* Cor do placeholder */
+.formulario input::placeholder,
+.formulario textarea::placeholder {
+    color: var(--cor-texto-fraco);
+}
+
+/* Opções do <select> */
+.formulario select option {
+    background-color: var(--cor-fundo-card);
+    color: var(--cor-branco);
+}
+
+/* Textarea sem redimensionamento horizontal */
+.formulario textarea {
+    resize: vertical; /* Só permite redimensionar verticalmente */
+    min-height: 120px;
+}
+
+/* Campo com erro (classe adicionada pelo JavaScript) */
+.campo-invalido {
+    border-color: var(--cor-erro) !important; /* Borda vermelha sobrescreve o padrão */
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.15) !important;
+}
+
+/* Mensagem de erro (exibida pelo JavaScript) */
+.erro {
+    font-family: var(--fonte-mono);
+    font-size: 0.8em;
+    color: var(--cor-erro);          /* Texto vermelho */
+    min-height: 18px;                /* Reserva espaço para não "pular" o layout */
+}
+
+/* Contador de caracteres do textarea */
+.contador-chars {
+    font-family: var(--fonte-mono);
+    font-size: 0.78em;
+    color: var(--cor-texto-fraco);
+    text-align: right; /* Alinha à direita */
+}
+
+/* Grupo especial para o checkbox */
+.campo-grupo-checkbox {
+    margin-top: 8px;
+}
+
+/* Label com checkbox: texto e caixa lado a lado */
+.label-checkbox {
+    display: flex;
+    align-items: flex-start; /* Alinha ao topo para textos longos */
+    gap: 12px;
+    cursor: pointer;         /* Mão ao passar sobre o label */
+    font-family: var(--fonte-mono);
+    font-size: 0.88em;
+    color: var(--cor-texto);
+    line-height: 1.5;
+}
+
+/* Checkbox personalizado */
+.label-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;  /* Não encolhe junto ao texto */
+    accent-color: var(--cor-primaria); /* Cor da marca de seleção (moderna) */
+    margin-top: 2px; /* Pequeno ajuste de alinhamento vertical */
+    cursor: pointer;
+}
+
+/* Link dos termos dentro do label */
+.link-termos {
+    color: var(--cor-primaria);
+    text-decoration: none;
+}
+.link-termos:hover {
+    text-decoration: underline;
+    color: var(--cor-acento);
+}
+
+/* Botão do formulário: ocupa 100% da largura */
+.btn-form {
+    width: 100%;
+    margin-top: 16px;
+    font-size: 1em;
+    letter-spacing: 0.08em;
+}
+
+/* Mensagem de sucesso após envio */
+.mensagem-sucesso {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background-color: rgba(74, 222, 128, 0.1);   /* Verde claro translúcido */
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    border-radius: 8px;
+    color: var(--cor-sucesso);                    /* Texto verde */
+    font-family: var(--fonte-mono);
+    font-size: 0.95em;
+    text-align: center;
+}
+
+
+/* ============================================================
+   UTILITÁRIOS GERAIS
+   ============================================================ */
+.text-center  { text-align: center; }
+.margin-top-40 { margin-top: 40px; }
+
+
+/* ============================================================
+   RESPONSIVIDADE — TELAS MENORES (max-width: 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+
+    /* Cabeçalho em coluna */
+    .cabecalho-inner   { flex-direction: column; text-align: center; }
+    .cabecalho-decorativo { display: none; }
+    .container-cabecalho  { padding: 28px 24px; }
+    .cabecalho-titulo  { font-size: 1.5em; }
+
+    /* Navegação em coluna */
+    .container-navegacao { flex-direction: column; padding: 0; gap: 0; }
+    .nav-link            { padding: 14px 20px; }
+
+    /* Seções com menos padding */
+    .container-quem-somos,
+    .container-servicos,
+    .container-contatos,
+    .container-formulario,
+    .container-servicos-contatos { padding: 60px 24px; }
+
+    /* Cards em largura total */
+    .servico,
+    .servico-card,
+    .contato-card { width: 100%; max-width: 420px; }
+
+    /* Formulário com menos padding */
+    .formulario { padding: 32px 24px; }
+
+    /* Botões em coluna */
+    .botoes-servicos-contatos { flex-direction: column; align-items: center; }
+    .btn { width: 100%; max-width: 320px; text-align: center; }
+
+    /* Rodapé em coluna */
+    .footer-inner { flex-direction: column; text-align: center; }
+    footer        { padding: 36px 24px; }
+}

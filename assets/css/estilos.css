@@ -1,0 +1,268 @@
+/* estilos da minha página web */
+
+* {
+    margin: 0;   /* Remove a margem padrão de todos os elementos */
+    padding: 0;  /* Remove o espaçamento interno padrão de todos os elementos */
+    /* box-shadow: inset 0px 0px 2px rgb(255, 255, 255); */
+    /* (comentado) Adicionaria uma sombra interna branca de 2px em todos os elementos */
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif; /* Define a fonte do site, com alternativas caso a anterior não esteja disponível */
+    color: white;                              /* Define a cor padrão do texto como branco */
+}
+
+/* ----------------------------------- */
+/* geral */
+.text-center {
+    text-align: center; /* Centraliza o texto horizontalmente */
+}
+
+.margin-top-40 {
+    margin-top: 40px; /* Adiciona 40px de espaço acima do elemento */
+}
+
+/* ----------------------------------- */
+.container-cabecalho {
+    text-align: center;        /* Centraliza o conteúdo do cabeçalho */
+    padding: 20px;             /* Adiciona 20px de espaçamento interno em todos os lados */
+    background-color: #04233F; /* Define a cor de fundo (azul escuro) */
+}
+
+.container-cabecalho h3 {
+    font-weight: 600; /* Define o peso da fonte como semi-negrito */
+    font-size: 2em;   /* Define o tamanho da fonte como 2x o tamanho do elemento pai */
+    color: #1190ff;   /* Define a cor do texto como azul */
+}
+
+/* ----------------------------------- */
+.container-navegacao {
+    text-align: center;        /* Centraliza os itens de navegação */
+    padding: 20px;             /* Adiciona 20px de espaçamento interno em todos os lados */
+    background-color: #06345d; /* Define o fundo azul escuro da barra de navegação */
+}
+
+.container-navegacao a {
+    font-size: 1.5em;      /* Define o tamanho dos links como 1.5x o tamanho do pai */
+    margin: 0px 50px;      /* Sem margem vertical; 50px de margem horizontal entre os links */
+    text-decoration: none; /* Remove o sublinhado padrão dos links */
+    color: #7cc2ff;        /* Define a cor dos links como azul claro */
+    /* Estilo para animação de menu botão */
+    /* transition: background-color 0.3s ease; */
+}
+
+.container-navegacao a:hover {
+    color: #ffffff; /* Muda a cor do link para branco quando o mouse passa por cima */
+    /* Variação de menu estilo botão */
+    /* background-color: #1190FF;
+    padding: 20px; */
+}
+
+/* ----------------------------------- */
+.container-quem-somos {
+    background-color: #05192a; /* Define o fundo azul muito escuro da seção */
+    overflow: auto;            /* Faz o container envolver elementos filhos com float (clearfix) */
+}
+
+.container-quem-somos .servico {
+    /* float: center; — REMOVIDO: "center" não é um valor válido para float.         */
+    /* A centralização já é feita corretamente pela linha abaixo: margin: auto       */
+    margin: 60px auto;         /* 60px de margem vertical; centraliza horizontalmente com "auto" */
+    background-color: #061f35; /* Fundo azul escuro do card */
+    width: 50%;                /* O card ocupa 50% da largura do container pai */
+    padding: 50px;             /* 50px de espaçamento interno em todos os lados */
+    border-radius: 10px;       /* Arredonda os cantos do card em 10px */
+    text-align: center;        /* Centraliza o conteúdo interno do card */
+}
+
+.container-quem-somos .servico .icone {
+    margin-bottom: 10px; /* Adiciona 10px de espaço abaixo do ícone */
+}
+
+.container-quem-somos .servico-texto {
+    font-family: 'Courier New', Courier, monospace; /* Define fonte monoespaçada para o texto */
+    margin-top: 20px;                               /* Adiciona 20px de espaço acima do texto */
+    font-size: 1.2em;                               /* Define o tamanho da fonte como 1.2x o do pai */
+    color: #81c4ff;                                 /* Define a cor do texto como azul claro */
+}
+
+.container-quem-somos .servico-texto-realce {
+    color: white;      /* Define a cor do texto de destaque como branco */
+    font-weight: bold; /* Deixa o texto de destaque em negrito */
+}
+
+/* ----------------------------------- */
+/* Container .container-servicos-contatos */
+.container-servicos-contatos {
+    background-color: #082946; /* Define o fundo azul escuro da seção */
+    padding: 80px;             /* 80px de espaçamento interno em todos os lados */
+    text-align: center;        /* Centraliza o conteúdo */
+}
+
+/* Container .botoes-servicos-contatos */
+.container-servicos-contatos .botoes-servicos-contatos {
+    padding: 60px;      /* 60px de espaçamento interno ao redor dos botões */
+    text-align: center; /* Centraliza os botões */
+}
+
+.botoes-servicos-contatos a {
+    display: block;            /* Faz o link se comportar como bloco (ocupa linha inteira) */
+    max-width: 200px;          /* Largura máxima do botão de 200px */
+    text-decoration: none;     /* Remove o sublinhado do link */
+    font-size: 1.2em;          /* Tamanho de fonte 1.2x maior que o do pai */
+    background-color: #008eb9; /* Define o fundo azul do botão */
+    color: white;              /* Define o texto como branco */
+    padding: 20px 60px;        /* 20px de espaçamento vertical e 60px de espaçamento horizontal */
+    margin: 10px auto;         /* 10px de margem vertical; centraliza horizontalmente */
+    border-radius: 10px;       /* Arredonda os cantos do botão */
+}
+
+.botoes-servicos-contatos a:hover {
+    background-color: white; /* Muda o fundo do botão para branco ao passar o mouse */
+    color: black;            /* Muda o texto para preto ao passar o mouse */
+}
+
+/* ----------------------------------- */
+.container-servicos {
+    background-color: #05192a; /* Define o fundo azul escuro da seção de serviços */
+    font-size: 1.1em;          /* Define o tamanho base da fonte levemente aumentado */
+    padding: 60px;             /* 60px de espaçamento interno em todos os lados */
+    overflow: auto;            /* Garante que o container envolva os filhos com float */
+}
+
+.container-servicos h1 {
+    font-size: 3em;      /* Define o título como 3x o tamanho da fonte do pai */
+    color: white;        /* Define o texto como branco */
+    margin-bottom: 20px; /* Adiciona 20px de espaço abaixo do título */
+}
+
+.container-servicos h3 {
+    color: #2097ff;  /* Define a cor azul para os subtítulos */
+    padding: 20px 0; /* 20px de espaçamento acima e abaixo; sem espaçamento lateral */
+}
+
+.container-servicos article {
+    width: 40%;  /* O artigo ocupa 40% da largura do container */
+    margin: auto; /* Centraliza o artigo horizontalmente */
+    /* float: center; — REMOVIDO: "center" não é um valor válido para float. */
+    /* O margin: auto acima já é suficiente para centralizar com o width definido */
+}
+
+.container-servicos li {
+    margin-bottom: 20px; /* Adiciona 20px de espaço abaixo de cada item da lista */
+    margin-left: 50px;   /* Adiciona 50px de recuo à esquerda de cada item */
+    color: white;        /* Define o texto dos itens como branco */
+}
+
+/* ----------------------------------- */
+/* Container .container-contatos */
+.container-contatos {
+    background-color: #05192a; /* Define o fundo azul escuro da seção de contatos */
+    padding: 80px;             /* 80px de espaçamento interno em todos os lados */
+}
+
+.container-contatos h1 {
+    font-size: 3em;      /* Define o título como 3x o tamanho da fonte do pai */
+    color: white;        /* Define o texto como branco */
+    margin-bottom: 20px; /* Adiciona 20px de espaço abaixo do título */
+}
+
+.container-contatos h3 {
+    font-size: 1.5em;          /* Define o tamanho da fonte como 1.5x o do pai */
+    font-weight: 900;          /* Define o peso da fonte como muito fino (thin) */
+    width: 40%;                /* O elemento ocupa 40% da largura do container */
+    margin: auto;              /* Centraliza o elemento horizontalmente */
+    color: white;              /* Define o texto como branco */
+    margin-bottom: 20px;       /* Adiciona 20px de espaço abaixo */
+    border: 1px solid #105088; /* Adiciona uma borda sólida de 1px na cor azul escuro */
+    background-color: #08253f; /* Define o fundo azul escuro do card de contato */
+    border-radius: 10px;       /* Arredonda os cantos em 10px */
+    padding: 20px;             /* 20px de espaçamento interno em todos os lados */
+}
+
+/* Container .contatos */
+.container-contatos .contatos {
+    display: block;        /* Faz o link se comportar como bloco */
+    font-size: 2em;        /* Define o tamanho da fonte como 2x o do pai */
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: #00a2ff;        /* Define a cor azul para os links de contato */
+    margin-bottom: 20px;   /* Adiciona 20px de espaço abaixo de cada contato */
+}
+
+/* ----------------------------------- */
+footer {
+    text-align: center;        /* Centraliza o conteúdo do rodapé */
+    padding: 80px;             /* 80px de espaçamento interno em todos os lados */
+    background-color: #02111f; /* Define o fundo azul muito escuro, quase preto */
+    color: gray;               /* Define o texto do rodapé como cinza */
+}
+.form-contato {
+    max-width: 600px;
+    margin: auto;
+    text-align: left;
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.grupo-campo {
+    margin-bottom: 20px;
+}
+
+.grupo-campo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+/* Aplica o estilo aos inputs, selects e textareas */
+.grupo-campo input,
+.grupo-campo select,
+.grupo-campo textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 16px;
+    box-sizing: border-box; /* Garante que o padding não quebre o width 100% */
+}
+
+.grupo-campo input:focus,
+.grupo-campo select:focus,
+.grupo-campo textarea:focus {
+    border-color: #0056b3; /* Cor de destaque ao clicar no campo */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
+}
+
+.btn-enviar {
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-enviar:hover {
+    background-color: #004494;
+}
+
+/* Mensagem de erro/sucesso do Javascript */
+.mensagem-alerta {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+    display: none; /* Oculto por padrão */
+}
+
+.alerta-erro { color: #d9534f; display: block; }
+.alerta-sucesso { color: #5cb85c; display: block; }
+
+
+
